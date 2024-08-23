@@ -7,14 +7,16 @@ const success = document.getElementById("success")
 const miss = document.getElementById("miss")
 const kentei = document.getElementById("kentei")
 const startGame = document.getElementById("start")
+const reload = document.getElementById("reload")
 
 var time = 0
 var missCount = 0
 var successCount = 0
 var gameCount = 1 //回数カウントのために0ではなく1を代入
 startGame.disabled = false
+reload.style.display ='none'
 
-
+//ゲーム開始
 function gameStart(){
     pushedSuzuki.style.display ='block'
     pushedYamaguchi.style.display = 'block'
@@ -22,6 +24,7 @@ function gameStart(){
     displayMSG.style.display = 'none'
     startGame.disabled = true
     startGame.style.display = 'none'
+    
 
     //乱数生成
     randomNumberOne = Math.floor(Math.random() *3)
@@ -29,6 +32,7 @@ function gameStart(){
     const viewImg = Math.floor(Math.random() * 2)
     console.log(viewImg)
 
+    //ゲーム終了を判別
     if (gameCount == 11){
         displayMSG.style.display = 'block'
         displayMSG.textContent ="ゲーム終了！！"
@@ -38,7 +42,9 @@ function gameStart(){
         miss.textContent = ("不正解数は"+missCount+"回です")
         count.style.display ='none'
         startGame.style.display = 'none'
-        
+        reload.style.display ='block'
+        reload.textContent ="もう一度プレイするならF5を押そう"
+            //スコアに応じて表示内容を変更
             if(successCount >= 9){
                 kentei.textContent ="鈴木検定1級です！！！すごい！！！！！"
             }
@@ -53,6 +59,7 @@ function gameStart(){
             return
     }
 
+    //生成された乱数をファイル名に割り当てて表示
         if(viewImg == 0){
             pushedSuzuki.src ="./img/suzuki/suzuki-"+randomNumberOne+".jpg"
             pushedYamaguchi.src="./img/yamaguchi/yamaguchi-"+randomNumberTwo+".jpg"
@@ -68,7 +75,7 @@ function gameStart(){
 
     
 }
-
+//正誤判定
 function pushImgs(event){ 
     const  clickedImg = (event.target.src)
     const isClickedSucuki = clickedImg.includes("suzuki")
