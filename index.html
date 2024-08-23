@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./styles.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<header><h1>szk検定！！</h1></header>
+
+<body>
+    <button id="start" onclick="gameStart()">スタート</button>
+
+    <h2 id="displayMSG"></h2>
+    <p id="count"></p>
+    <p id="success"></p>
+    <p id="miss"></p>
+    <h2 id="kentei"></h2>
+
+    <div id="images">
+            <img style="display: none;" onclick="pushImgs(event)" id="suzuki">
+            <img style="display: none;" onclick="pushImgs(event)" id="yamaguchi">
+    </div>
+    
+    <script src="./scripts.js"></script>
+</body>
+</html>
+
